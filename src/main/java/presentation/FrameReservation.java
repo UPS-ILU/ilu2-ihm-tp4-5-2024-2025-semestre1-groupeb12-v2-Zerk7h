@@ -39,11 +39,16 @@ public class FrameReservation extends javax.swing.JFrame {
             }
         });
         jComboBoxHourSelector = new javax.swing.JComboBox<>();
-        jLabel1 = new javax.swing.JLabel();
-        labelHourSelector = new javax.swing.JLabel();
+        jLabelDateSelector = new javax.swing.JLabel();
+        jLabelHourSelector = new javax.swing.JLabel();
         nbPersonsPanel = new javax.swing.JPanel();
+        jLabelNumberPersonSelector = new javax.swing.JLabel();
+        jComboBoxNumberPersonSelector = new javax.swing.JComboBox<>();
         pickTablePanel = new javax.swing.JPanel();
         tablesImage = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jButtonAnnuler = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -52,10 +57,10 @@ public class FrameReservation extends javax.swing.JFrame {
         jComboBoxHourSelector.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBoxHourSelector.setEnabled(false);
 
-        jLabel1.setText("1. Choisissez la date");
+        jLabelDateSelector.setText("1. Choisissez la date");
 
-        labelHourSelector.setText("2. Choisissez l'heure");
-        labelHourSelector.setEnabled(false);
+        jLabelHourSelector.setText("2. Choisissez l'heure");
+        jLabelHourSelector.setEnabled(false);
 
         javax.swing.GroupLayout dateTimePanelLayout = new javax.swing.GroupLayout(dateTimePanel);
         dateTimePanel.setLayout(dateTimePanelLayout);
@@ -64,11 +69,11 @@ public class FrameReservation extends javax.swing.JFrame {
             .addGroup(dateTimePanelLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addGroup(dateTimePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
+                    .addComponent(jLabelDateSelector)
                     .addComponent(datePicker, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(dateTimePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelHourSelector)
+                    .addComponent(jLabelHourSelector)
                     .addComponent(jComboBoxHourSelector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(65, 65, 65))
         );
@@ -77,8 +82,8 @@ public class FrameReservation extends javax.swing.JFrame {
             .addGroup(dateTimePanelLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addGroup(dateTimePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(labelHourSelector))
+                    .addComponent(jLabelDateSelector)
+                    .addComponent(jLabelHourSelector))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(dateTimePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(datePicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -91,35 +96,79 @@ public class FrameReservation extends javax.swing.JFrame {
 
         nbPersonsPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        jLabelNumberPersonSelector.setText("3. Indiquez le nombre de personnes");
+        jLabelNumberPersonSelector.setEnabled(false);
+
+        jComboBoxNumberPersonSelector.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxNumberPersonSelector.setEnabled(false);
+
         javax.swing.GroupLayout nbPersonsPanelLayout = new javax.swing.GroupLayout(nbPersonsPanel);
         nbPersonsPanel.setLayout(nbPersonsPanelLayout);
         nbPersonsPanelLayout.setHorizontalGroup(
             nbPersonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 477, Short.MAX_VALUE)
+            .addGroup(nbPersonsPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(nbPersonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelNumberPersonSelector)
+                    .addComponent(jComboBoxNumberPersonSelector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         nbPersonsPanelLayout.setVerticalGroup(
             nbPersonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 108, Short.MAX_VALUE)
+            .addGroup(nbPersonsPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabelNumberPersonSelector)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jComboBoxNumberPersonSelector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(56, Short.MAX_VALUE))
         );
 
         pickTablePanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jLabel1.setText("4. Choisissez votre table");
+        jLabel1.setEnabled(false);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Plan_tables.jpg"))); // NOI18N
 
         javax.swing.GroupLayout pickTablePanelLayout = new javax.swing.GroupLayout(pickTablePanel);
         pickTablePanel.setLayout(pickTablePanelLayout);
         pickTablePanelLayout.setHorizontalGroup(
             pickTablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pickTablePanelLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(tablesImage, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(166, Short.MAX_VALUE))
+                .addGroup(pickTablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pickTablePanelLayout.createSequentialGroup()
+                        .addGap(49, 49, 49)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tablesImage, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pickTablePanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pickTablePanelLayout.setVerticalGroup(
             pickTablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pickTablePanelLayout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(tablesImage, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
-                .addContainerGap())
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGroup(pickTablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pickTablePanelLayout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addComponent(tablesImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(pickTablePanelLayout.createSequentialGroup()
+                        .addGap(93, 93, 93)
+                        .addComponent(jLabel2)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
+
+        jButtonAnnuler.setText("Annuler");
+        jButtonAnnuler.setEnabled(false);
+        jButtonAnnuler.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAnnulerActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -132,6 +181,10 @@ public class FrameReservation extends javax.swing.JFrame {
                     .addComponent(nbPersonsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(pickTablePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonAnnuler)
+                .addGap(31, 31, 31))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -142,28 +195,46 @@ public class FrameReservation extends javax.swing.JFrame {
                 .addComponent(nbPersonsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(pickTablePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addComponent(jButtonAnnuler)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButtonAnnulerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnnulerActionPerformed
+       jLabelHourSelector.setEnabled(false);
+        jComboBoxHourSelector.setEnabled(false);
+        jButtonAnnuler.setEnabled(false);
+        //TODO
+    }//GEN-LAST:event_jButtonAnnulerActionPerformed
+
     public void datePickerDateChanged(DateChangeEvent dateEvent) {
         
-        dialog.handleDateSelectedEvent(LocalDate.MAX);
+        dialog.handleDateSelectedEvent(dateEvent.getNewDate());
     }
     
     public void enableHourSelector(){
-        labelHourSelector.setEnabled(true);
+        jLabelHourSelector.setEnabled(true);
         jComboBoxHourSelector.setEnabled(true);
+    }
+    
+    public void enableButtonAnnuler(){
+        jButtonAnnuler.setEnabled(true);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.github.lgooddatepicker.components.DatePicker datePicker;
     private javax.swing.JPanel dateTimePanel;
+    private javax.swing.JButton jButtonAnnuler;
     private javax.swing.JComboBox<String> jComboBoxHourSelector;
+    private javax.swing.JComboBox<String> jComboBoxNumberPersonSelector;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel labelHourSelector;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabelDateSelector;
+    private javax.swing.JLabel jLabelHourSelector;
+    private javax.swing.JLabel jLabelNumberPersonSelector;
     private javax.swing.JPanel nbPersonsPanel;
     private javax.swing.JPanel pickTablePanel;
     private javax.swing.JLabel tablesImage;
