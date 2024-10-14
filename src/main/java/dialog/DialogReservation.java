@@ -26,23 +26,26 @@ public class DialogReservation {
     }
 
     public void handleDateSelectedEvent(LocalDate date) {
+        //inf.recupererDate(date);   a fare debuguer!!!!!!
         frameReservation.enableHourSelector();
         frameReservation.enableButtonAnnuler();
     }
     
     
     public void handleTimeSelectedEvent(String time) {
+        inf.recupererHeure(time);
         frameReservation.enableNbPersonsPanle();
     }
 
     public void handleNumOfPersonsSelectedEvent(int nbPersons) {
-        //TODO
-        throw new UnsupportedOperationException("Not implemented yet");
+        inf.recupererNbPersonne(nbPersons);
+        frameReservation.enablePickTablePanel();
+        //faut appeler la methode trouvertabledisponible
     }
 
     public void handleTableSelectedEvent(int numTable) {
-        //TODO
-        throw new UnsupportedOperationException("Not implemented yet");
+        //inf.recuperTable(numTable);
+        frameReservation.enableButtonValider();
     }
 
     public void handleCancelEvent() {

@@ -43,13 +43,14 @@ public class FrameReservation extends javax.swing.JFrame {
         jLabelHourSelector = new javax.swing.JLabel();
         nbPersonsPanel = new javax.swing.JPanel();
         jLabelNumberPersonSelector = new javax.swing.JLabel();
-        jComboBoxNumberPersonSelector = new javax.swing.JComboBox<>();
+        numberPersonSelector = new javax.swing.JComboBox<>();
         pickTablePanel = new javax.swing.JPanel();
-        tablesImage = new javax.swing.JLabel();
         jLabelTableSelector = new javax.swing.JLabel();
-        jLabelTableSelector2 = new javax.swing.JLabel();
+        jLabelTableSelectorPNG = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jListTable = new javax.swing.JList<>();
         jButtonAnnuler = new javax.swing.JButton();
-        jButton1Valider = new javax.swing.JButton();
+        jButtonValider = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -105,8 +106,13 @@ public class FrameReservation extends javax.swing.JFrame {
         jLabelNumberPersonSelector.setText("3. Indiquez le nombre de personnes");
         jLabelNumberPersonSelector.setEnabled(false);
 
-        jComboBoxNumberPersonSelector.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBoxNumberPersonSelector.setEnabled(false);
+        numberPersonSelector.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4" }));
+        numberPersonSelector.setEnabled(false);
+        numberPersonSelector.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                numberPersonSelectorActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout nbPersonsPanelLayout = new javax.swing.GroupLayout(nbPersonsPanel);
         nbPersonsPanel.setLayout(nbPersonsPanelLayout);
@@ -116,7 +122,7 @@ public class FrameReservation extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(nbPersonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelNumberPersonSelector)
-                    .addComponent(jComboBoxNumberPersonSelector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(numberPersonSelector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         nbPersonsPanelLayout.setVerticalGroup(
@@ -125,7 +131,7 @@ public class FrameReservation extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabelNumberPersonSelector)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBoxNumberPersonSelector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(numberPersonSelector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(56, Short.MAX_VALUE))
         );
 
@@ -134,7 +140,20 @@ public class FrameReservation extends javax.swing.JFrame {
         jLabelTableSelector.setText("4. Choisissez votre table");
         jLabelTableSelector.setEnabled(false);
 
-        jLabelTableSelector2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Plan_tables.jpg"))); // NOI18N
+        jLabelTableSelectorPNG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Plan_tables.jpg"))); // NOI18N
+
+        jListTable.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jListTable.setEnabled(false);
+        jListTable.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                jListTableValueChanged(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jListTable);
 
         javax.swing.GroupLayout pickTablePanelLayout = new javax.swing.GroupLayout(pickTablePanel);
         pickTablePanel.setLayout(pickTablePanelLayout);
@@ -145,26 +164,22 @@ public class FrameReservation extends javax.swing.JFrame {
                 .addGroup(pickTablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pickTablePanelLayout.createSequentialGroup()
                         .addGap(6, 6, 6)
-                        .addComponent(jLabelTableSelector2)
-                        .addGap(43, 43, 43)
-                        .addComponent(tablesImage, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabelTableSelectorPNG)
+                        .addGap(36, 36, 36)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE))
                     .addComponent(jLabelTableSelector))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(33, 33, 33))
         );
         pickTablePanelLayout.setVerticalGroup(
             pickTablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pickTablePanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabelTableSelector)
-                .addGroup(pickTablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pickTablePanelLayout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(tablesImage, javax.swing.GroupLayout.DEFAULT_SIZE, 335, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(pickTablePanelLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabelTableSelector2)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pickTablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1)
+                    .addComponent(jLabelTableSelectorPNG, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(99, Short.MAX_VALUE))
         );
 
         jButtonAnnuler.setText("Annuler");
@@ -175,11 +190,11 @@ public class FrameReservation extends javax.swing.JFrame {
             }
         });
 
-        jButton1Valider.setText("Valider");
-        jButton1Valider.setEnabled(false);
-        jButton1Valider.addActionListener(new java.awt.event.ActionListener() {
+        jButtonValider.setText("Valider");
+        jButtonValider.setEnabled(false);
+        jButtonValider.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ValiderActionPerformed(evt);
+                jButtonValiderActionPerformed(evt);
             }
         });
 
@@ -196,7 +211,7 @@ public class FrameReservation extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1Valider)
+                .addComponent(jButtonValider)
                 .addGap(18, 18, 18)
                 .addComponent(jButtonAnnuler)
                 .addGap(31, 31, 31))
@@ -213,7 +228,7 @@ public class FrameReservation extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonAnnuler)
-                    .addComponent(jButton1Valider))
+                    .addComponent(jButtonValider))
                 .addContainerGap())
         );
 
@@ -231,53 +246,74 @@ public class FrameReservation extends javax.swing.JFrame {
         //TODO
     }//GEN-LAST:event_jButtonAnnulerActionPerformed
 
-    private void jButton1ValiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ValiderActionPerformed
+    private void jButtonValiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonValiderActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ValiderActionPerformed
+    }//GEN-LAST:event_jButtonValiderActionPerformed
 
     private void hourSelectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hourSelectorActionPerformed
-        // TODO add your handling code here:
+        System.out.println("presentation.FrameReservation.hourSelectorHourChanged()");
+        String hour = (String) hourSelector.getSelectedItem();
+        dialog.handleTimeSelectedEvent(hour);
     }//GEN-LAST:event_hourSelectorActionPerformed
 
-    public void datePickerDateChanged(DateChangeEvent dateEvent) {
+    private void numberPersonSelectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numberPersonSelectorActionPerformed
+        System.out.println("presentation.FrameReservation.numberPersonSelectorActionPerformed()");
+        String person = (String) numberPersonSelector.getSelectedItem();
+        int nbPerson = Integer.parseInt(person);
+        dialog.handleNumOfPersonsSelectedEvent(nbPerson);
+    }//GEN-LAST:event_numberPersonSelectorActionPerformed
+
+    private void jListTableValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListTableValueChanged
         
+        dialog.handleTableSelectedEvent(NORMAL); //je dois lui mettre la table choisis
+    }//GEN-LAST:event_jListTableValueChanged
+
+    public void datePickerDateChanged(DateChangeEvent dateEvent) {
         dialog.handleDateSelectedEvent(dateEvent.getNewDate());
     }
     
-    public void hourSelectorHourChanged(String hour){
-        hour = (String) hourSelector.getSelectedItem();
-        dialog.handleTimeSelectedEvent(hour);
-    } 
     
     public void enableHourSelector(){
         jLabelHourSelector.setEnabled(true);
         hourSelector.setEnabled(true);
     }
     
+    
+    public void enableNbPersonsPanle(){
+        jLabelNumberPersonSelector.setEnabled(true);
+        numberPersonSelector.setEnabled(true);
+    }
+    
+    public void enablePickTablePanel(){
+        jLabelTableSelectorPNG.setEnabled(true);
+        jLabelTableSelector.setEnabled(true);
+        jListTable.setEnabled(true);
+    }
+    
     public void enableButtonAnnuler(){
         jButtonAnnuler.setEnabled(true);
     }
     
-    public void enableNbPersonsPanle(){
-        jLabelNumberPersonSelector.setEnabled(true);
-        jComboBoxNumberPersonSelector.setEnabled(true);
+    public void enableButtonValider(){
+        jButtonValider.setEnabled(true);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.github.lgooddatepicker.components.DatePicker datePicker;
     private javax.swing.JPanel dateTimePanel;
     private javax.swing.JComboBox<String> hourSelector;
-    private javax.swing.JButton jButton1Valider;
     private javax.swing.JButton jButtonAnnuler;
-    private javax.swing.JComboBox<String> jComboBoxNumberPersonSelector;
+    private javax.swing.JButton jButtonValider;
     private javax.swing.JLabel jLabelDateSelector;
     private javax.swing.JLabel jLabelHourSelector;
     private javax.swing.JLabel jLabelNumberPersonSelector;
     private javax.swing.JLabel jLabelTableSelector;
-    private javax.swing.JLabel jLabelTableSelector2;
+    private javax.swing.JLabel jLabelTableSelectorPNG;
+    private javax.swing.JList<String> jListTable;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel nbPersonsPanel;
+    private javax.swing.JComboBox<String> numberPersonSelector;
     private javax.swing.JPanel pickTablePanel;
-    private javax.swing.JLabel tablesImage;
     // End of variables declaration//GEN-END:variables
 
 }
