@@ -40,7 +40,7 @@ public class DialogReservation {
     public void handleNumOfPersonsSelectedEvent(int nbPersons) {
         inf.recupererNbPersonne(nbPersons);
         frameReservation.enablePickTablePanel();
-        //faut appeler la methode trouvertabledisponible
+        //faut appeler la methode trouvertabledisponible qui va mettre a jour la jListTable
     }
 
     public void handleTableSelectedEvent(int numTable) {
