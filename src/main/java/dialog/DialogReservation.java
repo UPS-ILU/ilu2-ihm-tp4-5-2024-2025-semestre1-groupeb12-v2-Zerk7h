@@ -43,8 +43,8 @@ public class DialogReservation {
         //faut appeler la methode trouvertabledisponible qui va mettre a jour la jListTable
     }
 
-    public void handleTableSelectedEvent(int numTable) {
-        //inf.recuperTable(numTable);
+    public void handleTableSelectedEvent(String numTable) {
+        inf.recuperTable(numTable);
         frameReservation.enableButtonValider();
     }
 
