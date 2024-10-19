@@ -271,6 +271,7 @@ public class FrameReservation extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jListTableValueChanged
 
+    
     public void datePickerDateChanged(DateChangeEvent dateEvent) {
         dialog.handleDateSelectedEvent(dateEvent.getNewDate());
     }
