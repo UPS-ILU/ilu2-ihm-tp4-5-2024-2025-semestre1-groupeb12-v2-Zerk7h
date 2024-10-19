@@ -4,6 +4,7 @@
  */
 package dialog;
 
+import com.github.lgooddatepicker.zinternaltools.DateChangeEvent;
 import interface_noyau_fonctionnel.InterfaceNoyauFonctionnel;
 import java.awt.EventQueue;
 import java.time.LocalDate;
@@ -26,7 +27,7 @@ public class DialogReservation {
     }
 
     public void handleDateSelectedEvent(LocalDate date) {
-        //inf.recupererDate(date);   a fare debuguer!!!!!!
+        inf.recupererDate(date);
         frameReservation.enableHourSelector();
         frameReservation.enableButtonAnnuler();
     }
@@ -40,7 +41,8 @@ public class DialogReservation {
     public void handleNumOfPersonsSelectedEvent(int nbPersons) {
         inf.recupererNbPersonne(nbPersons);
         frameReservation.enablePickTablePanel();
-        //faut appeler la methode trouvertabledisponible qui va mettre a jour la jListTable
+        String[] tablesDisponibles = inf.trouverTableDisponible(inf.getJour(), inf.getMois(), inf.getNb(), inf.getHeure1());
+        frameReservation.updateTableList(tablesDisponibles);
     }
 
     public void handleTableSelectedEvent(String numTable) {
@@ -49,7 +51,7 @@ public class DialogReservation {
     }
 
     public void handleCancelEvent() {
-        //TODO
+        frameReservation.disableAll();
         throw new UnsupportedOperationException("Not implemented yet");
     }
 

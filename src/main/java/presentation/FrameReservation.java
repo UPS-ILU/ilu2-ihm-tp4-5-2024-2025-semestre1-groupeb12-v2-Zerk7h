@@ -8,6 +8,7 @@ import com.github.lgooddatepicker.optionalusertools.DateChangeListener;
 import com.github.lgooddatepicker.zinternaltools.DateChangeEvent;
 import dialog.DialogReservation;
 import java.time.LocalDate;
+import javax.swing.DefaultListModel;
 
 @SuppressWarnings("serial")
 public class FrameReservation extends javax.swing.JFrame {
@@ -142,11 +143,6 @@ public class FrameReservation extends javax.swing.JFrame {
 
         jLabelTableSelectorPNG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Plan_tables.jpg"))); // NOI18N
 
-        jListTable.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jListTable.setEnabled(false);
         jListTable.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
@@ -236,20 +232,7 @@ public class FrameReservation extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonAnnulerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnnulerActionPerformed
-        jLabelHourSelector.setEnabled(false);
-        hourSelector.setEnabled(false);
-        jLabelNumberPersonSelector.setEnabled(false);
-        numberPersonSelector.setEnabled(false);
-        jLabelTableSelectorPNG.setEnabled(false);
-        jLabelTableSelector.setEnabled(false);
-        jListTable.setEnabled(false);
-        jButtonValider.setEnabled(false);
-        
-        datePicker.setDate(null);
-        hourSelector.setSelectedItem(null);
-        numberPersonSelector.setSelectedItem(null);
-        
-        //TODO
+        dialog.handleCancelEvent();
     }//GEN-LAST:event_jButtonAnnulerActionPerformed
 
     private void jButtonValiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonValiderActionPerformed
@@ -307,6 +290,26 @@ public class FrameReservation extends javax.swing.JFrame {
     public void enableButtonValider(){
         jButtonValider.setEnabled(true);
     }
+    
+    public void disableAll(){
+        jLabelHourSelector.setEnabled(false);
+        hourSelector.setEnabled(false);
+        jLabelNumberPersonSelector.setEnabled(false);
+        numberPersonSelector.setEnabled(false);
+        jLabelTableSelectorPNG.setEnabled(false);
+        jLabelTableSelector.setEnabled(false);
+        jListTable.setEnabled(false);
+        jButtonValider.setEnabled(false);
+        
+        datePicker.setDate(null);
+        hourSelector.setSelectedItem(null);
+        numberPersonSelector.setSelectedItem(null);
+    }
+    
+    public void updateTableList(String[] tables) {
+        jListTable.setListData(tables);
+}
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.github.lgooddatepicker.components.DatePicker datePicker;
