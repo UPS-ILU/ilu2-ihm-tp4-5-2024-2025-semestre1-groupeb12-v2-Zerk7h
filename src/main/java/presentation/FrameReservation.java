@@ -238,11 +238,17 @@ public class FrameReservation extends javax.swing.JFrame {
     private void jButtonAnnulerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnnulerActionPerformed
         jLabelHourSelector.setEnabled(false);
         hourSelector.setEnabled(false);
-        jButtonAnnuler.setEnabled(false);
-        //TODO
+        jLabelNumberPersonSelector.setEnabled(false);
+        numberPersonSelector.setEnabled(false);
+        jLabelTableSelectorPNG.setEnabled(false);
+        jLabelTableSelector.setEnabled(false);
+        jListTable.setEnabled(false);
+        jButtonValider.setEnabled(false);
         
-        hourSelector.setSelectedIndex(-1);
         datePicker.setDate(null);
+        hourSelector.setSelectedItem(null);
+        numberPersonSelector.setSelectedItem(null);
+        
         //TODO
     }//GEN-LAST:event_jButtonAnnulerActionPerformed
 
