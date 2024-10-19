@@ -264,9 +264,11 @@ public class FrameReservation extends javax.swing.JFrame {
     }//GEN-LAST:event_numberPersonSelectorActionPerformed
 
     private void jListTableValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListTableValueChanged
-        System.out.println("presentation.FrameReservation.jListTableValueChanged()");
-        String table = (String) jListTable.getSelectedValue();
-        dialog.handleTableSelectedEvent(table);
+        if (!evt.getValueIsAdjusting()) {
+            System.out.println("presentation.FrameReservation.jListTableValueChanged()");
+            String table = (String) jListTable.getSelectedValue();
+            dialog.handleTableSelectedEvent(table);
+        }
     }//GEN-LAST:event_jListTableValueChanged
 
     public void datePickerDateChanged(DateChangeEvent dateEvent) {
