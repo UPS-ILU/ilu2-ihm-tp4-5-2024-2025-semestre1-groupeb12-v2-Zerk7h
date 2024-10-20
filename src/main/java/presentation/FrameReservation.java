@@ -48,7 +48,7 @@ public class FrameReservation extends javax.swing.JFrame {
         pickTablePanel = new javax.swing.JPanel();
         jLabelTableSelector = new javax.swing.JLabel();
         jLabelTableSelectorPNG = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        jScrollPaneTable = new javax.swing.JScrollPane();
         jListTable = new javax.swing.JList<>();
         jButtonAnnuler = new javax.swing.JButton();
         jButtonValider = new javax.swing.JButton();
@@ -149,7 +149,7 @@ public class FrameReservation extends javax.swing.JFrame {
                 jListTableValueChanged(evt);
             }
         });
-        jScrollPane1.setViewportView(jListTable);
+        jScrollPaneTable.setViewportView(jListTable);
 
         javax.swing.GroupLayout pickTablePanelLayout = new javax.swing.GroupLayout(pickTablePanel);
         pickTablePanel.setLayout(pickTablePanelLayout);
@@ -162,7 +162,7 @@ public class FrameReservation extends javax.swing.JFrame {
                         .addGap(6, 6, 6)
                         .addComponent(jLabelTableSelectorPNG)
                         .addGap(36, 36, 36)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE))
+                        .addComponent(jScrollPaneTable, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE))
                     .addComponent(jLabelTableSelector))
                 .addGap(33, 33, 33))
         );
@@ -173,7 +173,7 @@ public class FrameReservation extends javax.swing.JFrame {
                 .addComponent(jLabelTableSelector)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pickTablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPaneTable)
                     .addComponent(jLabelTableSelectorPNG, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(99, Short.MAX_VALUE))
         );
@@ -336,7 +336,7 @@ public class FrameReservation extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelTableSelector;
     private javax.swing.JLabel jLabelTableSelectorPNG;
     private javax.swing.JList<String> jListTable;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPaneTable;
     private javax.swing.JPanel nbPersonsPanel;
     private javax.swing.JComboBox<String> numberPersonSelector;
     private javax.swing.JPanel pickTablePanel;
