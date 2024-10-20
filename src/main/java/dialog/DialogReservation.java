@@ -4,7 +4,6 @@
  */
 package dialog;
 
-import com.github.lgooddatepicker.zinternaltools.DateChangeEvent;
 import interface_noyau_fonctionnel.InterfaceNoyauFonctionnel;
 import java.awt.EventQueue;
 import java.time.LocalDate;
@@ -13,7 +12,7 @@ import presentation.FrameReservation;
 public class DialogReservation {
 
     private FrameReservation frameReservation;
-    private InterfaceNoyauFonctionnel inf;
+    private final InterfaceNoyauFonctionnel inf;
 
     public DialogReservation(InterfaceNoyauFonctionnel inf) {
         this.inf = inf;

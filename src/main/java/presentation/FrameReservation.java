@@ -8,7 +8,6 @@ import com.github.lgooddatepicker.optionalusertools.DateChangeListener;
 import com.github.lgooddatepicker.zinternaltools.DateChangeEvent;
 import dialog.DialogReservation;
 import java.time.LocalDate;
-import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
 @SuppressWarnings("serial")
@@ -58,7 +57,7 @@ public class FrameReservation extends javax.swing.JFrame {
 
         dateTimePanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        hourSelector.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        hourSelector.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "12H", "12H30", "13H", "13H30", "14H", "14H30", "20H", "20H30", "21H", "21H30", "22H", "22H30" }));
         hourSelector.setEnabled(false);
         hourSelector.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,7 +107,7 @@ public class FrameReservation extends javax.swing.JFrame {
         jLabelNumberPersonSelector.setText("3. Indiquez le nombre de personnes");
         jLabelNumberPersonSelector.setEnabled(false);
 
-        numberPersonSelector.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4" }));
+        numberPersonSelector.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8" }));
         numberPersonSelector.setEnabled(false);
         numberPersonSelector.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -294,19 +293,25 @@ public class FrameReservation extends javax.swing.JFrame {
     
     public void disableAll(){
         String[] tab={};
+        
+        datePicker.setDate(null);
+        hourSelector.setSelectedItem(null);
+        
+        jButtonAnnuler.setEnabled(false);
+        
         jLabelHourSelector.setEnabled(false);
         hourSelector.setEnabled(false);
-        jLabelNumberPersonSelector.setEnabled(false);
-        numberPersonSelector.setEnabled(false);
+        
         jLabelTableSelectorPNG.setEnabled(false);
         jLabelTableSelector.setEnabled(false);
         jListTable.setEnabled(false);
         jListTable.setListData(tab);
         jButtonValider.setEnabled(false);
+
+        jLabelNumberPersonSelector.setEnabled(false);
+        numberPersonSelector.setEnabled(false);
         
-        datePicker.setDate(null);
-        hourSelector.setSelectedItem(null);
-        numberPersonSelector.setSelectedItem(null);
+        numberPersonSelector.setSelectedIndex(-1);
     }
     
     public void validation(String table, String heure, LocalDate date, int nbPersonne){

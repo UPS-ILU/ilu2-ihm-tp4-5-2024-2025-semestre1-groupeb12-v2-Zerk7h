@@ -1,6 +1,5 @@
 package interface_noyau_fonctionnel;
 
-import com.github.lgooddatepicker.zinternaltools.DateChangeEvent;
 import java.time.LocalDate;
 
 public class InterfaceNoyauFonctionnel {
@@ -35,7 +34,13 @@ public class InterfaceNoyauFonctionnel {
     }
     
     public String[] trouverTableDisponible(int jour, int mois, int nombrePersonnes, String time) {
-        return new String[]{"Table 1", "Table 2", "Table 3", "Table 4", "Table 5", "Table 6"};
+        if(nb<3){
+            return new String[]{"Table 1"};
+        }else if(nb<5){
+            return new String[]{"Table 2", "Table 3", "Table 4", "Table 5"};
+        }else{
+            return new String[]{"Table 6"};
+        }
     }
 
     public void recupererDate(LocalDate date){
