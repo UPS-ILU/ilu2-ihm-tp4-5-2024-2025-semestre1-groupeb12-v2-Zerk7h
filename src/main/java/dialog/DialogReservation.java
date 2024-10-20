@@ -40,7 +40,7 @@ public class DialogReservation {
     public void handleNumOfPersonsSelectedEvent(int nbPersons) {
         inf.recupererNbPersonne(nbPersons);
         frameReservation.enablePickTablePanel();
-        String[] tablesDisponibles = inf.trouverTableDisponible(inf.getJour(), inf.getMois(), inf.getNb(), inf.getHeure1());
+        String[] tablesDisponibles = inf.trouverTableDisponible(inf.getJour(), inf.getMois1(), inf.getNb(), inf.getHeure1());
         frameReservation.updateTableList(tablesDisponibles);
     }
 
@@ -54,7 +54,8 @@ public class DialogReservation {
     }
 
     public void handleValidationEvent() {
-        frameReservation.validation(inf.getTable1(), inf.getHeure1(), inf.getDate1(), inf.getNb());
+        frameReservation.validation(inf.getTable1(), inf.getHeure1(), inf.getJour(), inf.getMois(), inf.getAnne(), inf.getNb());
+        frameReservation.disableAll();
     }
 
     public static void main(String[] args) {

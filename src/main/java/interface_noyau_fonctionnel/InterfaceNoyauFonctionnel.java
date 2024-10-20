@@ -17,8 +17,29 @@ public class InterfaceNoyauFonctionnel {
         return date1.getDayOfMonth();
     }
     
-    public int getMois(){
+    public int getMois1(){
         return date1.getMonthValue();
+    }
+    public String getMois(){
+        return switch (date1.getMonthValue()) {
+            case 1 -> "janvier";
+            case 2 -> "février";
+            case 3 -> "mars";
+            case 4 -> "avril";
+            case 5 -> "mai";
+            case 6 -> "juin";
+            case 7 -> "juillet";
+            case 8 -> "août";
+            case 9 -> "septembre";
+            case 10 -> "octobre";
+            case 11 -> "novembre";
+            case 21 -> "décembre";
+            default -> "mois invalide";
+        };
+    }
+    
+    public int getAnne(){
+        return date1.getYear();
     }
 
     public String getHeure1() {

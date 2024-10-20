@@ -7,7 +7,6 @@ package presentation;
 import com.github.lgooddatepicker.optionalusertools.DateChangeListener;
 import com.github.lgooddatepicker.zinternaltools.DateChangeEvent;
 import dialog.DialogReservation;
-import java.time.LocalDate;
 import javax.swing.JOptionPane;
 
 @SuppressWarnings("serial")
@@ -58,6 +57,7 @@ public class FrameReservation extends javax.swing.JFrame {
         dateTimePanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         hourSelector.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "12H", "12H30", "13H", "13H30", "14H", "14H30", "20H", "20H30", "21H", "21H30", "22H", "22H30" }));
+        hourSelector.setSelectedItem(null);
         hourSelector.setEnabled(false);
         hourSelector.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,6 +108,7 @@ public class FrameReservation extends javax.swing.JFrame {
         jLabelNumberPersonSelector.setEnabled(false);
 
         numberPersonSelector.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8" }));
+        numberPersonSelector.setSelectedItem(null);
         numberPersonSelector.setEnabled(false);
         numberPersonSelector.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -314,8 +315,8 @@ public class FrameReservation extends javax.swing.JFrame {
         numberPersonSelector.setSelectedIndex(-1);
     }
     
-    public void validation(String table, String heure, LocalDate date, int nbPersonne){
-        String message = String.format("La réservation de la %s pour %d personnes a été confirmée pour le %s à %s!", table, nbPersonne, date.toString(), heure);
+    public void validation(String table, String heure, int jour, String mois, int annee, int nbPersonne){
+        String message = String.format("Réservation validée pour le %s %s %s à %s pour %d personnes à la %s.\n", jour, mois, annee, heure, nbPersonne, table);
         JOptionPane.showMessageDialog(null, message);
     }
     
