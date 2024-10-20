@@ -52,12 +52,10 @@ public class DialogReservation {
 
     public void handleCancelEvent() {
         frameReservation.disableAll();
-        throw new UnsupportedOperationException("Not implemented yet");
     }
 
     public void handleValidationEvent() {
-        //TODO
-        throw new UnsupportedOperationException("Not implemented yet");
+        frameReservation.validation(inf.getTable1(), inf.getHeure1(), inf.getDate1(), inf.getNb());
     }
 
     public static void main(String[] args) {

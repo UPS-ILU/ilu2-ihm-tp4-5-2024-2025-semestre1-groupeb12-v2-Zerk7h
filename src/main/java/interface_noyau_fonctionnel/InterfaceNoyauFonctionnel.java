@@ -10,6 +10,10 @@ public class InterfaceNoyauFonctionnel {
     String table1;
     int nb;
     
+    public LocalDate getDate1() {
+        return date1;
+    }
+    
     public int getJour(){
         return date1.getDayOfMonth();
     }

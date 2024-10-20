@@ -9,6 +9,7 @@ import com.github.lgooddatepicker.zinternaltools.DateChangeEvent;
 import dialog.DialogReservation;
 import java.time.LocalDate;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 @SuppressWarnings("serial")
 public class FrameReservation extends javax.swing.JFrame {
@@ -236,7 +237,7 @@ public class FrameReservation extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonAnnulerActionPerformed
 
     private void jButtonValiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonValiderActionPerformed
-        // TODO add your handling code here:
+        dialog.handleValidationEvent();
     }//GEN-LAST:event_jButtonValiderActionPerformed
 
     private void hourSelectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hourSelectorActionPerformed
@@ -292,6 +293,7 @@ public class FrameReservation extends javax.swing.JFrame {
     }
     
     public void disableAll(){
+        String[] tab={};
         jLabelHourSelector.setEnabled(false);
         hourSelector.setEnabled(false);
         jLabelNumberPersonSelector.setEnabled(false);
@@ -299,11 +301,17 @@ public class FrameReservation extends javax.swing.JFrame {
         jLabelTableSelectorPNG.setEnabled(false);
         jLabelTableSelector.setEnabled(false);
         jListTable.setEnabled(false);
+        jListTable.setListData(tab);
         jButtonValider.setEnabled(false);
         
         datePicker.setDate(null);
         hourSelector.setSelectedItem(null);
         numberPersonSelector.setSelectedItem(null);
+    }
+    
+    public void validation(String table, String heure, LocalDate date, int nbPersonne){
+        String message = String.format("La réservation de la %s pour %d personnes a été confirmée pour le %s à %s!", table, nbPersonne, date.toString(), heure);
+        JOptionPane.showMessageDialog(null, message);
     }
     
     public void updateTableList(String[] tables) {
